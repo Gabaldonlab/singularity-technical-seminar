@@ -1,6 +1,6 @@
-[submodule "phylomizer-2024"]
-	path = phylomizer-2024
-	url = https://github.com/Gabaldonlab/phylomizer-2024
 [submodule "metaline"]
 	path = metaline
-	url = https://github.com/Gabaldonlab/metaline
+	url = https://github.com/gabaldonlab/metaline
+[submodule "phylomizer-2024"]
+	path = phylomizer-2024
+	url = https://github.com/gabaldonlab/phylomizer-2024
