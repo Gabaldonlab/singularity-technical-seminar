@@ -1,0 +1,46 @@
+Bootstrap: docker  # Use Docker as the base image
+From: python:3.12.9-slim-bookworm  # Use a minimal Debian based Python image, because we are using mainly Python, and it is compatible with separete R installs.
+
+%files
+    ./* /my_dummy_pipeline/
+
+%post
+    # Usually, we will almost certianly need these basic libraries / tool.
+    apt-get update
+    apt-get install -y \
+    wget \
+    curl \
+    libcurl4-openssl-dev \
+    software-properties-common
+    # =================================
+
+    # Add apt-fast repository to install apt-fast,
+    # which will make the package installation faster and concurrent.
+    /bin/bash -c "$(curl -sL https://git.io/vokNn)"
+    # =================================
+
+    apt-get update
+    # Set non-interactive installation mode and timezone to avoid prompts
+    DEBCONF_NOWARNINGS="yes" \
+    TZ="Europe/Madrid" \
+    DEBIAN_FRONTEND=noninteractive \
+
+    # Install R packages
+    # NOTE: Python is already installed in the base image.
+    # NOTE: Pin down versions to improve reproducibility.
+    # Install ggplot2 via the already available and compiled APT repository.
+    apt-fast install -y \
+        r-base=4.2.2.20221110-2 \
+        r-base-dev=4.2.2.20221110-2 \
+        r-cran-ggplot2=3.4.1+dfsg-1 \
+        r-cran-ggplot2=3.4.1+dfsg-1
+
+    # Install the Python packages through the official Python PyPI repository
+    pip install pandas numpy
+
+    wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.16.0+-x64-linux.tar.gz
+    tar -zxvf ncbi-blast-2.16.0+-x64-linux.tar.gz
+    cp -r ncbi-blast-2.16.0+/bin/* /bin/
+
+%test
+    python3 /my_dummy_pipeline/main.py --help

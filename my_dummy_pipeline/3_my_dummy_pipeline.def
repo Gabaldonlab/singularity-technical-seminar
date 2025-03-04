@@ -1,0 +1,5 @@
+Bootstrap: localimage  # Use a locally compiled image as the base image
+From: 2_my_dummy_pipeline.sif # We use the previous chunk as the continuation.
+
+%files
+    ./* /my_dummy_pipeline/

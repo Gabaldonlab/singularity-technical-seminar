@@ -1,0 +1,7 @@
+Bootstrap: localimage  # Use a locally compiled image as the base image
+From: 3_my_dummy_pipeline.sif # We use the previous chunk as the continuation.
+
+%post
+    wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.16.0+-x64-linux.tar.gz
+    tar -zxvf ncbi-blast-2.16.0+-x64-linux.tar.gz
+    cp -r ncbi-blast-2.16.0+/bin/* /bin/

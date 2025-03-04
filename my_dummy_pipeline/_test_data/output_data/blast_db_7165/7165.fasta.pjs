@@ -1,0 +1,22 @@
+{
+  "version": "1.2",
+  "dbname": "7165.fasta",
+  "dbtype": "Protein",
+  "db-version": 5,
+  "description": "c00a1241-a6cb-4498-9f94-7357512fcb4d",
+  "number-of-letters": 7306013,
+  "number-of-sequences": 12909,
+  "last-updated": "2025-03-04T12:48:00",
+  "number-of-volumes": 1,
+  "bytes-total": 9709905,
+  "bytes-to-cache": 7422315,
+  "files": [
+    "7165.fasta.pdb",
+    "7165.fasta.phr",
+    "7165.fasta.pin",
+    "7165.fasta.pot",
+    "7165.fasta.psq",
+    "7165.fasta.ptf",
+    "7165.fasta.pto"
+  ]
+}
